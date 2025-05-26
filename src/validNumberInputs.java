@@ -15,14 +15,24 @@ public class validNumberInputs {
         int number5 = 0;
 
         for (int i = 1; i <= 5; i++) {
-            boolean validnumber = false;
-            int number = 0;
+            boolean isNumberValid;
+            int number;
+            int tries = 0;
 
             do {
-                System.out.print("Enter number " + "#" + i);
+                if(tries == 0){
+                    System.out.println("Enter number " + "#" + i);
+                }else {
+                    System.out.println("Please Enter a valid number " + "#" + i);
+                }
+
                 number = validateNumber(scanner.nextLine());
-                validnumber = number >= 0;
-            } while (!validnumber);
+                isNumberValid = number >= 0;
+                if(isNumberValid == false){
+                    System.out.println("Invalid number !!");
+                    tries++;
+                }
+            } while (!isNumberValid);
 
             switch (i) {
                 case 1:
@@ -49,7 +59,7 @@ public class validNumberInputs {
     }
 
     public static int validateNumber(String number) {
-        int parsedNumber = 0;
+        int parsedNumber;
         try {
             parsedNumber = Integer.parseInt(number);
         } catch (NumberFormatException badInput) {
