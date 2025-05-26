@@ -33,7 +33,7 @@ public class readingInputs {
         System.out.println("Please enter your name: ");
         String name = scanner.nextLine();
         boolean validDob = false;
-        int age;
+        int age = 0;
         int numberOfAttempts = 0;
 
         do {
@@ -44,15 +44,17 @@ public class readingInputs {
                 System.out.println("Enter a year of birth greater or equal to " + (currentYear - 125) + " and less than or equal to " + (currentYear));
             }
 
-            String yearOfBirth = scanner.nextLine();
-            numberOfAttempts++;
-            int validatedYearOfBirth = checkDate(currentYear, yearOfBirth);
+            try{
+                String yearOfBirth = scanner.nextLine();
+                numberOfAttempts++;
+                age = checkDate(currentYear, yearOfBirth);
+                validDob = age >= 0;
 
-            if (validatedYearOfBirth != -1) {
-                validDob = true;
+            }catch (NumberFormatException badUserData) {
+                System.out.println("Please enter a valid year of birth, characters not allowed!!");
             }
 
-            age = validatedYearOfBirth;
+
         } while (!validDob);
 
 
