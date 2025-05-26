@@ -33,10 +33,16 @@ public class readingInputs {
         System.out.println("Please enter your name: ");
         String name = scanner.nextLine();
         System.out.println("Please enter your year of birth: ");
-        int yearOfBirth = Integer.parseInt(scanner.nextLine());
+        String yearOfBirth = scanner.nextLine();
 
+       int validatedYearOfBirth = checkDate(currentYear, yearOfBirth);
 
-        int userAge = currentYear - yearOfBirth;
+        if(validatedYearOfBirth == -1) {
+          System.out.println("You have entered an invalid year!");
+          return null;
+        }
+       
+        int userAge = currentYear - validatedYearOfBirth;
 
 
         return "So you are " + userAge + " years old!";
@@ -44,11 +50,12 @@ public class readingInputs {
 
     public static int checkDate(int currentYear, String yearOfBirth) {
         int dob = Integer.parseInt(yearOfBirth);
-        int mininumYearOfBirth = currentYear - 125;
+        int minimumYearOfBirth = currentYear - 125;
 
-        
+        if((dob < minimumYearOfBirth) || (dob > currentYear)) {
+            return -1;
+        }
 
-
-        return 0;
+        return currentYear - dob;
     }
 }
