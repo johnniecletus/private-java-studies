@@ -28,7 +28,7 @@ public class validNumberInputs {
 
                 number = validateNumber(scanner.nextLine());
                 isNumberValid = number >= 0;
-                if(isNumberValid == false){
+                if(isNumberValid){
                     System.out.println("Invalid number !!");
                     tries++;
                 }
