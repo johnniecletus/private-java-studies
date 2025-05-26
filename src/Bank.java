@@ -56,4 +56,27 @@ public class Bank {
     }
 
 
+    public double withdraw(int accountNumber, double amount) {
+
+        if ((this.balance - amount) < 0 || amount <= 0 || this.accountNumber != accountNumber) {
+            return -1;
+        }
+        setBalance(this.balance - amount);
+        return this.balance - amount;
+    }
+
+    public double deposit(int accountNumber, double amount) {
+        if (amount <= 0) {
+            return -1;
+        }
+
+        if (accountNumber != this.accountNumber){
+            return -2;
+        }
+
+        setBalance(this.balance + amount);
+
+        return this.balance + amount;
+    }
+
 }
