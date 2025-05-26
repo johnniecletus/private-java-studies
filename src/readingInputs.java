@@ -32,27 +32,38 @@ public class readingInputs {
 
         System.out.println("Please enter your name: ");
         String name = scanner.nextLine();
-        System.out.println("Please enter your year of birth: ");
-        String yearOfBirth = scanner.nextLine();
+        boolean validDob = false;
+        int age;
+        int numberOfAttempts = 0;
 
-       int validatedYearOfBirth = checkDate(currentYear, yearOfBirth);
+        do {
 
-        if(validatedYearOfBirth == -1) {
-          System.out.println("You have entered an invalid year!");
-          return null;
-        }
-       
-        int userAge = currentYear - validatedYearOfBirth;
+            if (numberOfAttempts == 0) {
+                System.out.println("Please enter your year of birth: ");
+            } else {
+                System.out.println("Enter a year of birth greater or equal to " + (currentYear - 125) + " and less than or equal to " + (currentYear));
+            }
+
+            String yearOfBirth = scanner.nextLine();
+            numberOfAttempts++;
+            int validatedYearOfBirth = checkDate(currentYear, yearOfBirth);
+
+            if (validatedYearOfBirth != -1) {
+                validDob = true;
+            }
+
+            age = validatedYearOfBirth;
+        } while (!validDob);
 
 
-        return "So you are " + userAge + " years old!";
+        return "So you are " + age + " years old!";
     }
 
     public static int checkDate(int currentYear, String yearOfBirth) {
         int dob = Integer.parseInt(yearOfBirth);
         int minimumYearOfBirth = currentYear - 125;
 
-        if((dob < minimumYearOfBirth) || (dob > currentYear)) {
+        if ((dob < minimumYearOfBirth) || (dob > currentYear)) {
             return -1;
         }
 
