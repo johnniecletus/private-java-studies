@@ -8,7 +8,7 @@ public class SimpleConsoleGame {
 
         ArrayList<PlayerObject> Players = new ArrayList<>();
 
-        int playerCount = 0;
+        int playerCount = 1;
 
 
         while (true) {
@@ -17,11 +17,11 @@ public class SimpleConsoleGame {
             System.out.println("Hello Player " + playerCount +  ", what is your name?");
             String name = scanner.nextLine();
 
-            if (name.contains("Qq")) {
+            if (name.equalsIgnoreCase("q")) {
                 break;
             }
 
-            System.out.println("Welcome" + name + ", Please enter your score");
+            System.out.println("Welcome " + name + ", Please enter your score");
 
             int score = validateScore(scanner.nextLine());
 
