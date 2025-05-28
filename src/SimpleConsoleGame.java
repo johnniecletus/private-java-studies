@@ -41,6 +41,13 @@ public class SimpleConsoleGame {
 
         Players.sort((a, b) -> b.getScore() - a.getScore());
 
+//        Collections.sort(Players, new Comparator<PlayerObject>() {
+//            public int compare(PlayerObject a, PlayerObject b) {
+//                return b.getScore() - a.getScore();
+//            }
+//        });
+
+
         System.out.println("\n🏆 Leaderboard 🏆");
 
         for (int i = 0; i < Players.size(); i++) {
